@@ -1,10 +1,10 @@
-import scala.scalajs.js.JSApp
+import org.scalajs.dom._
+import scala.util.Random._
+import scala.scalajs.js.annotation.{JSExport, JSExportTopLevel}
+@JSExportTopLevel("MainApp")
+object MainApp extends {
 
-import org.scalajs.dom
-import dom.{ document, window }
-
-object MainApp extends JSApp {
-
+  @JSExport
   def main(): Unit = {
     println("Starting 'bootstrap-generator'...")
 
@@ -12,6 +12,11 @@ object MainApp extends JSApp {
     val text = document.createTextNode("Hello!")
     p.appendChild(text)
     document.body.appendChild(p)
+  }
+
+  @JSExport
+  def random(div: html.Div):Unit ={
+    div.style.setProperty("--base", s"#${nextInt(256).toHexString}${nextInt(256).toHexString}${nextInt(256).toHexString}")
   }
 
 }

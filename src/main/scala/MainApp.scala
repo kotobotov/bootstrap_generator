@@ -16,7 +16,12 @@ object MainApp extends {
 
   @JSExport
   def random(div: html.Div):Unit ={
-    div.style.setProperty("--base", s"#${nextInt(256).toHexString}${nextInt(256).toHexString}${nextInt(256).toHexString}")
+    div.style.setProperty("--base", getRandomColor)
+    div.style.setProperty("--jumbo-back", getRandomColor)
+  }
+
+  private def getRandomColor()={
+    s"#${nextInt(256).toHexString}${nextInt(256).toHexString}${nextInt(256).toHexString}"
   }
 
 }
